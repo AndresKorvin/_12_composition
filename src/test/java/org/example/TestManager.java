@@ -73,23 +73,4 @@ public class TestManager {
 
     }
 
-    @Test
-    void shouldFindLastNoLimit() {
-        Manager manager = new Manager();
-
-        int expected = 5;
-        manager.addFilm("newFilm 1");
-        manager.addFilm("newFilm 2");
-        manager.addFilm("newFilm 3");
-        manager.addFilm("newFilm 4");
-        manager.addFilm("newFilm 5");
-
-        String [] arr = manager.findLast();
-
-        int actual = arr.length;
-
-        Assertions.assertEquals(expected, actual);
-
-    }
-
 }

@@ -9,7 +9,7 @@ public class Manager {
             this.outputLimit = outputLimit;
     }
 
-    public void addFilm(String newFilm){
+    void addFilm(String newFilm){
          String [] tmp = new String[films.length + 1];
 
         for (int i = 0; i < films.length; i++) {
@@ -19,11 +19,8 @@ public class Manager {
         films = tmp;
     }
 
-    public String[] findAll() {
-        return this.films;
-    }
 
-    public String[] findLast() {
+     String[] findLast() {
         int resultLength = this.outputLimit;
 
         if (films.length < resultLength) resultLength = films.length;
@@ -34,7 +31,10 @@ public class Manager {
             }
             return tmp;
         }
-    public int getOutputLimit() {
+    int getOutputLimit() {
         return outputLimit;
+    }
+    String[] findAll() {
+        return films;
     }
 }
