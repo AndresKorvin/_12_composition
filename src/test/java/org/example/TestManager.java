@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class TestManager {
     @ParameterizedTest
     @CsvSource({
-                "newFilm1, newFilm2, newFilm3"
+            "newFilm1, newFilm2, newFilm3"
     })
     public void shouldAddFilm(String newFilm1, String newFilm2, String newFilm3) {
         Manager manager = new Manager();
@@ -17,8 +17,8 @@ public class TestManager {
         manager.addFilm(newFilm3);
 
         String expected = "newFilm1, newFilm2, newFilm3";
-        String [] tmp = manager.findAll();
-        String actual = String.join (", ", tmp);
+        String[] tmp = manager.findAll();
+        String actual = String.join(", ", tmp);
 
         Assertions.assertEquals(expected, actual);
     }
@@ -30,8 +30,8 @@ public class TestManager {
         manager.addFilm("newFilm 2");
         manager.addFilm("newFilm 3");
 
-        String [] expected = {"newFilm 3","newFilm 2","newFilm 1"};
-        String [] actual = manager.findLast();
+        String[] expected = {"newFilm 3", "newFilm 2", "newFilm 1"};
+        String[] actual = manager.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
 
@@ -44,11 +44,12 @@ public class TestManager {
             "1,1",
             "50,50"
     })
-    void shouldOutputLimit (int outputLimit, int expected) {
+    void shouldOutputLimit(int outputLimit, int expected) {
         Manager manager = new Manager(outputLimit);
         int actual = manager.getOutputLimit();
         Assertions.assertEquals(expected, actual);
     }
+
     @ParameterizedTest
     @CsvSource({
             "1,1",
@@ -65,7 +66,7 @@ public class TestManager {
         manager.addFilm("newFilm 4");
         manager.addFilm("newFilm 5");
 
-        String [] arr = manager.findLast();
+        String[] arr = manager.findLast();
 
         int actual = arr.length;
 
