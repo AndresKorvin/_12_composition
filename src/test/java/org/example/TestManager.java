@@ -50,28 +50,63 @@ public class TestManager {
         Assertions.assertEquals(expected, actual);
     }
 
-    @ParameterizedTest
-    @CsvSource({
-            "1,1",
-            "5,5",
-            "6,5",
-            "40,5"
-    })
-    void shouldFindLastLimit(int outputLimit, int expected) {
+    @Test
+    void shouldFindLastUnderLimit() {
+        int outputLimit = 11;
         Manager manager = new Manager(outputLimit);
 
-        manager.addFilm("newFilm 1");
-        manager.addFilm("newFilm 2");
-        manager.addFilm("newFilm 3");
-        manager.addFilm("newFilm 4");
-        manager.addFilm("newFilm 5");
+        manager.addFilm("newFilm5");
+        manager.addFilm("newFilm2");
+        manager.addFilm("newFilm4");
+        manager.addFilm("newFilm3");
+        manager.addFilm("newFilm6");
+        manager.addFilm("newFilm8");
+        manager.addFilm("newFilm1");
+        manager.addFilm("newFilm7");
 
-        String[] arr = manager.findLast();
+        String[] actual = manager.findLast();
+        String[] expected = {"newFilm7", "newFilm1", "newFilm8", "newFilm6", "newFilm3", "newFilm4", "newFilm2", "newFilm5"};
 
-        int actual = arr.length;
-
-        Assertions.assertEquals(expected, actual);
-
+        Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    void shouldFindLastAboveLimit() {
+        int outputLimit = 5;
+        Manager manager = new Manager(outputLimit);
+
+        manager.addFilm("newFilm5");
+        manager.addFilm("newFilm2");
+        manager.addFilm("newFilm4");
+        manager.addFilm("newFilm3");
+        manager.addFilm("newFilm6");
+        manager.addFilm("newFilm8");
+        manager.addFilm("newFilm1");
+        manager.addFilm("newFilm7");
+
+        String[] actual = manager.findLast();
+        String[] expected = {"newFilm7", "newFilm1", "newFilm8", "newFilm6", "newFilm3"};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldFindLastEqualsLimit() {
+        int outputLimit = 8;
+        Manager manager = new Manager(outputLimit);
+
+        manager.addFilm("newFilm5");
+        manager.addFilm("newFilm2");
+        manager.addFilm("newFilm4");
+        manager.addFilm("newFilm3");
+        manager.addFilm("newFilm6");
+        manager.addFilm("newFilm8");
+        manager.addFilm("newFilm1");
+        manager.addFilm("newFilm7");
+
+        String[] actual = manager.findLast();
+        String[] expected = {"newFilm7", "newFilm1", "newFilm8", "newFilm6", "newFilm3", "newFilm4", "newFilm2", "newFilm5"};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }

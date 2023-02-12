@@ -8,8 +8,9 @@ public class Manager {
     }
 
     public Manager(int outputLimit) {
-        if (outputLimit > 0)
+        if (outputLimit > 0) {
             this.outputLimit = outputLimit;
+        }
     }
 
     void addFilm(String newFilm) {
@@ -26,11 +27,13 @@ public class Manager {
     String[] findLast() {
         int resultLength = this.outputLimit;
 
-        if (films.length < resultLength) resultLength = films.length;
+        if (films.length < resultLength) {
+            resultLength = films.length;
+        }
 
         String[] tmp = new String[resultLength];
         for (int i = 0; i < resultLength; i++) {
-            tmp[i] = films[resultLength - 1 - i];
+            tmp[i] = films[films.length - 1 - i];
         }
         return tmp;
     }
